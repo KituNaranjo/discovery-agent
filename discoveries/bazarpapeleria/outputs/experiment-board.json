@@ -1,0 +1,41 @@
+{
+  "discovery": "bazarpapeleria",
+  "mvp": "Cotización previa de impresiones",
+  "metrica_exito_mvp": "Nº de impresiones ejecutadas y luego rechazadas por semana (insumo perdido) → debe bajar.",
+  "linea_base": "Rechazo tras imprimir ~25% (1 de 4 atenciones observadas); 'varias veces a la semana', 2-3 trabajos en semana mala, ~1 en semana normal (observador.md, propietaria.md, propietaria_seguimiento.md).",
+  "hypotheses": [
+    {
+      "id": "H-01",
+      "risk": "alto",
+      "assumption": "Que el cliente rechaza por DESCONOCER el precio: conocerlo antes de imprimir evitaría el rechazo. Hoy es una intuición de la propietaria, sin dato, y el cliente está 'referenciado', sin entrevista de primera mano (mvp-canvas.md riesgo #1, propietaria_seguimiento.md).",
+      "hypothesis": "Creemos que la propietaria reducirá las impresiones ejecutadas y luego rechazadas si dice el precio y pide confirmar ANTES de imprimir, porque el rechazo observado ocurre justo al revelar el costo recién después de impreso (observador.md, paso crítico #2).",
+      "metric": "Nº de impresiones ejecutadas y luego rechazadas por semana (papel/tinta gastados sin ingreso).",
+      "threshold": "En 2 semanas de prueba, el rechazo-tras-imprimir baja de ~25% a ≤10% de las atenciones de impresión (caída ≥60% del insumo perdido por semana frente a la línea base).",
+      "experiment": "Concierge / Mago de Oz, sin construir software: durante 2 semanas la propietaria cuenta/estima páginas, dice el precio y pide confirmar o cancelar ANTES de imprimir; registra en una hoja cada trabajo (cotizó-antes sí/no, aceptó, rechazó-antes, rechazó-después).",
+      "decision": "Si pasa → el precio sorpresa era la causa: construir el MVP de cotización previa (US-01..US-04). Si falla → el rechazo no se explica por desconocer el precio (pivotar: investigar la causa real —precio alto vs. competencia, expectativa del cliente—; descartar la cotización previa como remedio del rechazo antes de construir).",
+      "caja": "2 semanas de operación normal + 1 hoja de registro; sin desarrollo."
+    },
+    {
+      "id": "H-02",
+      "risk": "medio",
+      "assumption": "Que el nº de páginas se puede obtener rápido y SIN imprimir para los tres tipos de entrada (USB, celular, documento físico). Si no, la cotización previa es inoperable en el flujo real (mvp-canvas.md riesgo #2, propietaria_seguimiento.md).",
+      "hypothesis": "Creemos que la propietaria podrá cotizar antes de imprimir si obtiene el nº de páginas y el tipo sin ejecutar el trabajo, porque el obstáculo que ella declara no es voluntad sino herramienta: 'uno no sabe cuántas hojas son hasta que ya las imprimió' (propietaria_seguimiento.md).",
+      "metric": "% de trabajos en que se logra el nº de páginas correcto antes de imprimir, y segundos que toma obtenerlo.",
+      "threshold": "En las 2 semanas, se obtiene el nº de páginas sin imprimir en ≥80% de los trabajos y en ≤30 segundos cada uno, con error de conteo ≤1 página.",
+      "experiment": "Medición manual dentro del mismo periodo concierge: cronometrar la obtención del conteo por tipo de entrada (USB/celular = páginas del archivo en pantalla; físico = conteo directo de hojas) y anotar aciertos y tiempos.",
+      "decision": "Si pasa → la cotización previa es operable con el flujo actual: avanzar al MVP. Si falla → el conteo previo es el cuello de botella (pivotar: lectura automática del nº de páginas del archivo, o acotar el MVP a los tipos de entrada donde sí se logra, antes de prometer cotización universal).",
+      "caja": "Incluido en las 2 semanas de H-01 + un cronómetro; sin desarrollo."
+    },
+    {
+      "id": "H-03",
+      "risk": "medio",
+      "assumption": "Que el paso de cotización no alarga la atención ni se abandona bajo presión, dado que la propietaria atiende sola y a veces con varios clientes (mvp-canvas.md riesgo #3, propietaria_seguimiento.md, observador.md). Supuesto de viabilidad/adopción.",
+      "hypothesis": "Creemos que la propietaria sostendrá la cotización previa en su operación real si cotizar antes no le quita tiempo, porque su restricción declarada es simplicidad y velocidad: 'algo sencillo, que no me haga perder más tiempo del que ya tengo' (propietaria_seguimiento.md, R-09, R-10).",
+      "metric": "Tiempo medio de atención por trabajo de impresión (con cotización vs. línea base) y % de trabajos en que efectivamente aplicó la cotización previa.",
+      "threshold": "En las 2 semanas, el tiempo medio de atención por trabajo no aumenta más de 30 segundos frente a la línea base, y aplica la cotización previa en ≥90% de los trabajos (no la abandona en afluencia alta).",
+      "experiment": "Observación + bitácora dentro del periodo concierge: registrar tiempo de atención por trabajo y si aplicó la cotización, separando momentos de baja y alta afluencia.",
+      "decision": "Si pasa → la cotización previa es viable en operación unipersonal: avanzar al MVP cuidando la velocidad. Si falla → el paso es lento o se cae bajo presión (pivotar: simplificar al extremo —tarifa fija por rangos de páginas, precio en un toque— y reprobar; si aun así se abandona, descartar la cotización manual y replantear).",
+      "caja": "Incluido en las 2 semanas de H-01; sin desarrollo."
+    }
+  ]
+}
