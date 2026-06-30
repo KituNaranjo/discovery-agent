@@ -1,11 +1,13 @@
 # User stories (INVEST) — Bazar / Papelería
 
-Ancladas en la **Propietaria** (persona con respaldo `primera mano`). Cada
-historia cita su entrevista fuente y deriva de un requisito candidato
-(`requisitos.md`). Lo que la evidencia no respalda no se escribe.
+Ancladas en la **Propietaria** (operadora del proceso) y en el **Cliente de
+impresiones**, ambas con respaldo `primera mano` (propietaria.md /
+propietaria_seguimiento.md y cliente.md). Cada historia cita su entrevista fuente
+y deriva de un requisito candidato (`requisitos.md`). Lo que la evidencia no
+respalda no se escribe.
 
-> Las historias **[US-01]–[US-04]** forman el núcleo del MVP (ver `mvp-canvas.md`).
-> Las **[US-05]–[US-08]** son backlog posterior (quedan fuera del alcance inicial).
+> Las historias **[US-01]–[US-05]** forman el núcleo del MVP (ver `mvp-canvas.md`).
+> Las **[US-06]–[US-09]** son backlog posterior (quedan fuera del alcance inicial).
 
 ## Núcleo del MVP
 
@@ -47,23 +49,33 @@ historia cita su entrevista fuente y deriva de un requisito candidato
       ejecuta la impresión y no se gasta insumo.
   - Fuente: propietaria_seguimiento.md, observador.md · R-02
 
+- **[US-05]** Como Cliente de impresiones, quiero conocer el precio antes de que se
+  imprima, para decidir si me conviene gastar ahí o buscar otra opción sin llevarme
+  una sorpresa cuando ya está impreso.
+  - Criterios de aceptación:
+    - Dado un trabajo solicitado, cuando lo entrego, entonces se me informa el
+      precio estimado **antes** de imprimir y puedo aceptar o desistir.
+    - Dado un trabajo pequeño pero costoso (p. ej. una hoja con imagen a color),
+      cuando pregunto, entonces el precio mostrado refleja ese costo antes de ejecutar.
+  - Fuente: cliente.md · R-02
+
 ## Backlog posterior (fuera del MVP inicial)
 
-- **[US-05]** Como Propietaria, quiero registrar los trabajos de impresión
+- **[US-06]** Como Propietaria, quiero registrar los trabajos de impresión
   cancelados/no cobrados, para dejar rastro de la pérdida que hoy no anoto en ningún lado.
   - Criterios de aceptación:
     - Dado un trabajo cancelado tras cotizar, cuando lo registro, entonces queda
       anotado el insumo estimado consumido y la fecha.
   - Fuente: propietaria.md, propietaria_seguimiento.md · R-06
 
-- **[US-06]** Como Propietaria, quiero registrar las ventas de impresiones por
+- **[US-07]** Como Propietaria, quiero registrar las ventas de impresiones por
   separado de las de papelería, para distinguir de dónde viene mi ingreso.
   - Criterios de aceptación:
     - Dado un cobro, cuando lo registro, entonces queda clasificado como impresión
       o como producto de papelería.
   - Fuente: propietaria.md, observador.md · R-05
 
-- **[US-07]** Como Propietaria, quiero un reporte por semana/mes de cuánto perdí en
+- **[US-08]** Como Propietaria, quiero un reporte por semana/mes de cuánto perdí en
   impresiones canceladas y con qué frecuencia, para dimensionar el problema que hoy
   solo percibo.
   - Criterios de aceptación:
@@ -71,7 +83,7 @@ historia cita su entrevista fuente y deriva de un requisito candidato
       trabajos cancelados y el insumo estimado perdido en ese periodo.
   - Fuente: propietaria_seguimiento.md · R-07
 
-- **[US-08]** Como Propietaria, quiero registrar el costo de insumos (papel, tinta),
+- **[US-09]** Como Propietaria, quiero registrar el costo de insumos (papel, tinta),
   para estimar el costo real por impresión en lugar de calcularlo de memoria.
   - Criterios de aceptación:
     - Dado el costo de una resma y de un cartucho, cuando configuro el rendimiento,
@@ -80,11 +92,12 @@ historia cita su entrevista fuente y deriva de un requisito candidato
 
 ## Restricciones transversales (no funcionales)
 
-Aplican a todas las historias del MVP; provienen de la propietaria:
+Aplican a todas las historias del MVP:
 
 - **Simplicidad** — no agregar pasos complicados; hacer lo mismo de hoy en otro
   orden (R-09 · propietaria_seguimiento.md).
-- **Velocidad** — cotizar rápido, sin alargar la atención; atiende sola y a veces
-  con varios clientes (R-10 · propietaria_seguimiento.md, observador.md).
+- **Velocidad** — cotizar rápido, sin alargar la atención; la propietaria atiende
+  sola y a veces con varios clientes, y el cliente valora la rapidez por encima de
+  todo (R-10 · propietaria_seguimiento.md, observador.md, cliente.md).
 - **Usabilidad unipersonal** — operable por una sola persona sin conocimientos
   técnicos (R-11 · propietaria.md, propietaria_seguimiento.md).

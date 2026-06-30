@@ -1,7 +1,8 @@
 # Personas y stakeholders — Bazar / Papelería
 
 Evidencia base: `propietaria.md` y `propietaria_seguimiento.md` (primera persona,
-rol *propietaria*) y `observador.md` (observación directa, rol *observador*).
+rol *propietaria*), `observador.md` (observación directa, rol *observador*) y
+`cliente.md` (primera persona, rol *cliente*).
 
 ## Personas
 
@@ -24,17 +25,19 @@ rol *propietaria*) y `observador.md` (observación directa, rol *observador*).
 - **Respaldo:** `primera mano` (propietaria.md, propietaria_seguimiento.md).
 
 ### Cliente de impresiones — quien lleva documentos a imprimir
-- **Contexto:** Estudiante, vecino o trabajador que llega a imprimir documentos
-  (desde USB, celular o un físico para copias); no pregunta el precio antes de
-  pedir el trabajo (observador.md).
-- **Objetivo principal:** Obtener sus impresiones a un precio que considere
-  aceptable; si al final le parece alto, se va sin pagar y sin llevarse las copias
-  (propietaria.md, observador.md).
+- **Contexto:** Cliente frecuente que usa el servicio a diario, principalmente
+  para tareas escolares de sus hijos; llega con documentos desde USB, celular o un
+  físico para copias, y no pregunta el precio antes de pedir el trabajo
+  (cliente.md, observador.md).
+- **Objetivo principal:** Obtener sus impresiones rápido y con previsibilidad de
+  costo, para decidir **antes de imprimir** si vale la pena gastar ahí o buscar
+  otra opción (cliente.md).
 - **Dolores:**
+  - El precio resulta más alto de lo esperado, incluso en trabajos pequeños (p. ej. una sola hoja con imagen) (cliente.md).
+  - Conoce el precio total recién cuando el trabajo ya está impreso; eso le genera sorpresas desagradables y le quita la posibilidad de decidir (cliente.md, observador.md).
   - No tiene ninguna referencia de costo al entrar: no hay tarifario visible (observador.md).
-  - Conoce el precio total recién cuando el trabajo ya está impreso (observador.md, propietaria.md).
-- **Respaldo:** `referenciada` — descrita por la propietaria y por la observación
-  directa, **sin entrevista de primera mano** de un cliente.
+  - Valora la rapidez del servicio y teme perderla; cualquier cotización previa no debe sacrificar la velocidad que hoy aprecia (cliente.md).
+- **Respaldo:** `primera mano` (cliente.md).
 
 ## Stakeholders
 
@@ -56,13 +59,13 @@ rol *propietaria*) y `observador.md` (observación directa, rol *observador*).
 flowchart LR
   classDef src fill:#E2EAF3,stroke:#1A4E8A,color:#0E1A26;
   classDef per fill:#FBFCFA,stroke:#1A4E8A,color:#0E1A26;
-  classDef perref fill:#F6E3BC,stroke:#9A6605,color:#0E1A26;
   classDef pain fill:#F6E3BC,stroke:#9A6605,color:#0E1A26;
 
   P[propietaria.md]:::src --> PR[Propietaria]:::per
   PS[propietaria_seguimiento.md]:::src --> PR
   OB[observador.md]:::src --> PR
-  OB --> CL[Cliente de impresiones - referenciada]:::perref
+  CLI[cliente.md]:::src --> CL[Cliente de impresiones]:::per
+  OB --> CL
   P --> CL
 
   PR --> D1[imprime-antes-de-cotizar]:::pain
@@ -73,11 +76,14 @@ flowchart LR
   PR --> D7[registro-manual-sin-separar]:::pain
   PR --> D8[conteo-manual-hojas]:::pain
   PR --> D9[presion-atencion-unipersonal]:::pain
+  CL --> D10[precio-mayor-al-esperado]:::pain
+  CL --> D11[sin-previsibilidad-de-costo]:::pain
   CL --> D4[sin-tarifario-visible]:::pain
   CL --> D1
 ```
 
-> **Advertencia de respaldo:** la persona *Cliente de impresiones* está
-> `referenciada` (sin entrevista de primera mano). Por la regla de personas de
-> primera mano, no puede sustentar por sí sola un MVP centrado en el cliente. El
-> MVP debe anclarse en la *Propietaria*, que sí tiene respaldo de primera mano.
+> **Respaldo de personas:** ambas personas tienen entrevista de **primera mano**
+> (Propietaria: propietaria.md / propietaria_seguimiento.md; Cliente de
+> impresiones: cliente.md). No quedan personas solo `referenciadas`. El MVP se
+> ancla en la *Propietaria* (operadora y dueña del proceso), con la deseabilidad
+> del *Cliente de impresiones* ahora validada de primera mano.

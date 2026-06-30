@@ -11,9 +11,10 @@ respalda no se incluye.
   - Origen: propietaria_seguimiento.md, propietaria.md · Propietaria
 
 - **[R-02]** Comunicar/mostrar el precio estimado al cliente antes de imprimir,
-  como paso explícito de cotización previa a la ejecución.
+  como paso explícito de cotización previa a la ejecución, para que el cliente
+  pueda decidir si procede o no.
   - Tipo: funcional
-  - Origen: propietaria_seguimiento.md, observador.md · Propietaria
+  - Origen: propietaria_seguimiento.md, observador.md, cliente.md · Propietaria, Cliente de impresiones
 
 - **[R-03]** Determinar el número de páginas del documento a imprimir (desde USB,
   celular o archivo) sin necesidad de imprimirlo primero.
@@ -53,9 +54,10 @@ respalda no se incluye.
   - Origen: propietaria_seguimiento.md · Propietaria
 
 - **[R-10]** Velocidad: la cotización debe poder hacerse rápido, sin alargar la
-  atención, dado que la propietaria atiende sola y a veces con varios clientes.
+  atención, dado que la propietaria atiende sola y a veces con varios clientes y
+  que el cliente valora la rapidez por encima de todo (no debe sacrificarse).
   - Tipo: no funcional
-  - Origen: propietaria_seguimiento.md, observador.md · Propietaria
+  - Origen: propietaria_seguimiento.md, observador.md, cliente.md · Propietaria, Cliente de impresiones
 
 - **[R-11]** Usabilidad por una sola operadora, sin conocimientos técnicos ni
   apoyo adicional.

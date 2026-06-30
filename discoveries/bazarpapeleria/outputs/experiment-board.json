@@ -7,12 +7,12 @@
     {
       "id": "H-01",
       "risk": "alto",
-      "assumption": "Que el cliente rechaza por DESCONOCER el precio: conocerlo antes de imprimir evitaría el rechazo. Hoy es una intuición de la propietaria, sin dato, y el cliente está 'referenciado', sin entrevista de primera mano (mvp-canvas.md riesgo #1, propietaria_seguimiento.md).",
-      "hypothesis": "Creemos que la propietaria reducirá las impresiones ejecutadas y luego rechazadas si dice el precio y pide confirmar ANTES de imprimir, porque el rechazo observado ocurre justo al revelar el costo recién después de impreso (observador.md, paso crítico #2).",
+      "assumption": "Que cotizar antes REDUCE el insumo perdido por semana, y no solo adelanta la cancelación. La deseabilidad ya está validada de primera mano: el cliente confirma que querría conocer el precio antes para decidir si paga o busca otro lado (cliente.md). Lo que falta probar es el comportamiento de negocio: que ese cambio de orden baje el papel/tinta gastado sin ingreso (mvp-canvas.md riesgo #1, observador.md paso crítico #2).",
+      "hypothesis": "Creemos que la propietaria reducirá las impresiones ejecutadas y luego rechazadas si dice el precio y pide confirmar ANTES de imprimir, porque el cliente declara que con el precio por adelantado decidiría antes de gastar (cliente.md) y el rechazo observado ocurre justo al revelar el costo recién después de impreso (observador.md, paso crítico #2).",
       "metric": "Nº de impresiones ejecutadas y luego rechazadas por semana (papel/tinta gastados sin ingreso).",
       "threshold": "En 2 semanas de prueba, el rechazo-tras-imprimir baja de ~25% a ≤10% de las atenciones de impresión (caída ≥60% del insumo perdido por semana frente a la línea base).",
       "experiment": "Concierge / Mago de Oz, sin construir software: durante 2 semanas la propietaria cuenta/estima páginas, dice el precio y pide confirmar o cancelar ANTES de imprimir; registra en una hoja cada trabajo (cotizó-antes sí/no, aceptó, rechazó-antes, rechazó-después).",
-      "decision": "Si pasa → el precio sorpresa era la causa: construir el MVP de cotización previa (US-01..US-04). Si falla → el rechazo no se explica por desconocer el precio (pivotar: investigar la causa real —precio alto vs. competencia, expectativa del cliente—; descartar la cotización previa como remedio del rechazo antes de construir).",
+      "decision": "Si pasa → el precio sorpresa era la causa: construir el MVP de cotización previa (US-01..US-05). Si falla → el rechazo no se explica por desconocer el precio (pivotar: investigar la causa real —precio alto vs. competencia, expectativa del cliente—; descartar la cotización previa como remedio del rechazo antes de construir).",
       "caja": "2 semanas de operación normal + 1 hoja de registro; sin desarrollo."
     },
     {
@@ -29,8 +29,8 @@
     {
       "id": "H-03",
       "risk": "medio",
-      "assumption": "Que el paso de cotización no alarga la atención ni se abandona bajo presión, dado que la propietaria atiende sola y a veces con varios clientes (mvp-canvas.md riesgo #3, propietaria_seguimiento.md, observador.md). Supuesto de viabilidad/adopción.",
-      "hypothesis": "Creemos que la propietaria sostendrá la cotización previa en su operación real si cotizar antes no le quita tiempo, porque su restricción declarada es simplicidad y velocidad: 'algo sencillo, que no me haga perder más tiempo del que ya tengo' (propietaria_seguimiento.md, R-09, R-10).",
+      "assumption": "Que el paso de cotización no alarga la atención ni se abandona bajo presión, dado que la propietaria atiende sola y a veces con varios clientes, y que el cliente valora la rapidez por encima de todo y no debe sacrificarse (mvp-canvas.md riesgo #3, propietaria_seguimiento.md, observador.md, cliente.md). Supuesto de viabilidad/adopción.",
+      "hypothesis": "Creemos que la propietaria sostendrá la cotización previa en su operación real si cotizar antes no le quita tiempo, porque su restricción declarada es simplicidad y velocidad ('algo sencillo, que no me haga perder más tiempo del que ya tengo', propietaria_seguimiento.md) y el cliente valora ante todo la rapidez del servicio (cliente.md, R-09, R-10).",
       "metric": "Tiempo medio de atención por trabajo de impresión (con cotización vs. línea base) y % de trabajos en que efectivamente aplicó la cotización previa.",
       "threshold": "En las 2 semanas, el tiempo medio de atención por trabajo no aumenta más de 30 segundos frente a la línea base, y aplica la cotización previa en ≥90% de los trabajos (no la abandona en afluencia alta).",
       "experiment": "Observación + bitácora dentro del periodo concierge: registrar tiempo de atención por trabajo y si aplicó la cotización, separando momentos de baja y alta afluencia.",

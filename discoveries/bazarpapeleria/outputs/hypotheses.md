@@ -1,9 +1,9 @@
-# Hipótesis y experimentos — Bazar / Papelería
+# Hipótesis y Experimentos — Cotización previa de impresiones
 
-**Fecha:** 2026-06-18
+**Fecha:** 2026-06-29
 **Discovery:** `bazarpapeleria` · **MVP:** Cotización previa de impresiones
-**Fuentes:** `propietaria.md`, `propietaria_seguimiento.md`, `observador.md`
-(derivado de `mvp-canvas.md` y `experiment-board.json`).
+**Fuentes:** `mvp-canvas.md`, `requisitos.md`, `evidence-map.json` (derivado a su
+vez de `propietaria.md`, `propietaria_seguimiento.md`, `observador.md`, `cliente.md`).
 
 Fase posterior al MVP. Toma los **supuestos riesgosos** del MVP Canvas y los
 convierte en hipótesis **falsables**, cada una con el experimento **más barato**
@@ -27,11 +27,13 @@ flowchart LR
   classDef out fill:#1A4E8A,color:#fff,stroke:#123A68;
   classDef oc fill:#3E6FA6,color:#fff,stroke:#123A68;
   classDef im fill:#E89B0C,color:#0E1A26,stroke:#9A6605;
-  O[Output: cotizar el precio antes de imprimir y confirmar con el cliente]:::out --> C[Outcome: el cliente decide antes de que se gaste insumo; imprimir-antes-de-cotizar deja de ocurrir]:::oc --> I[Impact: menos impresiones rechazadas tras impresas; menos papel y tinta perdidos por semana]:::im
+  O[Output: cotizar el precio antes de imprimir y confirmar con el cliente]:::out --> C[Outcome: el cliente decide antes de que se gaste insumo; imprimir-antes-de-cotizar deja de ocurrir]:::oc --> I[Impact: rechazo-tras-imprimir de ~25% a ≤10%; menos papel y tinta perdidos por semana]:::im
 ```
 
-> **Métrica que comprueba la cadena:** nº de impresiones ejecutadas y luego
-> rechazadas por semana. Si el output no mueve esta métrica, la cadena se rompe.
+> Las hipótesis son los **puentes** de esta cadena. La deseabilidad (que el cliente
+> quiere el precio antes) ya está validada de primera mano (cliente.md); lo que
+> falta probar es que el output mueva la métrica. Si un supuesto falla, la cadena
+> se corta antes de producir impacto.
 
 ---
 
@@ -42,35 +44,37 @@ puede tumbar el MVP. Las tres corren en el **mismo** periodo concierge.
 
 | # | Hipótesis | Riesgo | Experimento | Caja de tiempo |
 |---|---|---|---|---|
-| H-01 | Cotizar antes evita el rechazo | 🔴 alto | Concierge / Mago de Oz + hoja de registro | 2 semanas; sin desarrollo |
-| H-02 | Se puede contar las páginas sin imprimir, rápido | 🟡 medio | Medición manual cronometrada por tipo de entrada | Incluido en las 2 semanas + cronómetro |
-| H-03 | La cotización no alarga la atención ni se abandona bajo presión | 🟡 medio | Observación + bitácora de tiempos y adopción | Incluido en las 2 semanas |
+| H-01 | Cotizar antes reduce el insumo perdido (no solo adelanta el rechazo) | 🔴 Alto | Concierge / Mago de Oz + hoja de registro | 2 semanas · sin desarrollo |
+| H-02 | Se puede contar las páginas sin imprimir, rápido | 🟡 Medio | Medición manual cronometrada por tipo de entrada | Incluido en las 2 semanas · cronómetro |
+| H-03 | La cotización no alarga la atención ni se abandona bajo presión | 🟡 Medio | Observación + bitácora de tiempos y adopción | Incluido en las 2 semanas |
 
 ---
 
 ## Test cards
 
-### [H-01] Cotizar antes evita el rechazo — riesgo: 🔴 **alto**
+### [H-01] Cotizar antes reduce el insumo perdido — riesgo: 🔴 **alto**
 
 ```mermaid
 flowchart TD
-  classDef test fill:#E2EAF3,stroke:#1A4E8A,color:#0E1A26;
+  classDef test fill:#F6E2DD,stroke:#B3402F,color:#0E1A26;
   classDef ok fill:#E3F1E8,stroke:#2E7D52,color:#0E1A26;
   classDef no fill:#F6E2DD,stroke:#B3402F,color:#0E1A26;
   H[H-01: concierge de cotización previa, 2 semanas]:::test
-  H -->|rechazo-tras-imprimir ≤10%| K[Perseverar: construir el MVP US-01..US-04]:::ok
-  H -->|el rechazo se mantiene| V[Pivotar: investigar la causa real / descartar la cotización previa]:::no
+  H -->|rechazo-tras-imprimir ≤10%| K[Perseverar: construir el MVP US-01..US-05]:::ok
+  H -->|el insumo perdido se mantiene| V[Pivotar: investigar la causa real / descartar la cotización previa]:::no
 ```
 
-- **Supuesto a probar:** que el cliente rechaza por **desconocer** el precio, y
-  conocerlo **antes** de imprimir evitaría el rechazo. Es el salto de fe central:
-  hoy es solo intuición de la propietaria, sin dato, y el cliente está
-  `referenciado`, sin entrevista de primera mano (mvp-canvas.md riesgo #1,
-  propietaria_seguimiento.md).
+- **Supuesto a probar:** que cotizar antes **reduce el insumo perdido** por semana,
+  y no solo adelanta la cancelación. La **deseabilidad ya está validada** de primera
+  mano: el cliente confirma que querría conocer el precio antes para decidir si paga
+  o busca otro lado (cliente.md). Lo que falta es el **comportamiento de negocio**:
+  que ese cambio de orden baje el papel/tinta gastado sin ingreso (mvp-canvas.md
+  riesgo #1, observador.md paso crítico #2).
 - **Hipótesis:** Creemos que la **propietaria** reducirá las impresiones ejecutadas
   y luego rechazadas **si** dice el precio y pide confirmar **antes** de imprimir,
-  **porque** el rechazo observado ocurre justo al revelar el costo recién después
-  de impreso (observador.md, paso crítico #2).
+  **porque** el cliente declara que con el precio por adelantado decidiría antes de
+  gastar (cliente.md) y el rechazo observado ocurre justo al revelar el costo recién
+  después de impreso (observador.md, paso crítico #2).
 - **Señal medible:** nº de impresiones ejecutadas y luego rechazadas por semana
   (papel/tinta gastados sin ingreso). *No de vanidad: si baja, baja el gasto real
   perdido y la propietaria recupera dinero para mantenimiento e insumos.*
@@ -84,7 +88,7 @@ flowchart TD
 - **Caja de tiempo/costo:** 2 semanas de operación normal + 1 hoja de registro.
   Sin desarrollo.
 - **Regla de decisión:** **Si pasa →** el precio sorpresa era la causa: construir el
-  MVP de cotización previa (US-01..US-04). **Si falla →** el rechazo no se explica
+  MVP de cotización previa (US-01..US-05). **Si falla →** el rechazo no se explica
   por desconocer el precio: **pivotar** (investigar la causa real —precio alto vs.
   competencia, expectativa del cliente—) y **descartar** la cotización previa como
   remedio del rechazo antes de invertir en construir.
@@ -95,7 +99,7 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-  classDef test fill:#E2EAF3,stroke:#1A4E8A,color:#0E1A26;
+  classDef test fill:#F6E3BC,stroke:#9A6605,color:#0E1A26;
   classDef ok fill:#E3F1E8,stroke:#2E7D52,color:#0E1A26;
   classDef no fill:#F6E2DD,stroke:#B3402F,color:#0E1A26;
   H[H-02: medición manual del conteo por tipo de entrada]:::test
@@ -134,7 +138,7 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-  classDef test fill:#E2EAF3,stroke:#1A4E8A,color:#0E1A26;
+  classDef test fill:#F6E3BC,stroke:#9A6605,color:#0E1A26;
   classDef ok fill:#E3F1E8,stroke:#2E7D52,color:#0E1A26;
   classDef no fill:#F6E2DD,stroke:#B3402F,color:#0E1A26;
   H[H-03: bitácora de tiempos y adopción bajo afluencia]:::test
@@ -144,12 +148,14 @@ flowchart TD
 
 - **Supuesto a probar:** que el paso de cotización no alarga la atención ni se
   abandona bajo presión, dado que la propietaria atiende **sola** y a veces con
-  varios clientes (mvp-canvas.md riesgo #3, propietaria_seguimiento.md,
-  observador.md). Es el supuesto de viabilidad/adopción.
+  varios clientes, y que el cliente valora la rapidez por encima de todo y no debe
+  sacrificarse (mvp-canvas.md riesgo #3, propietaria_seguimiento.md, observador.md,
+  cliente.md). Es el supuesto de viabilidad/adopción.
 - **Hipótesis:** Creemos que la **propietaria** sostendrá la cotización previa en su
   operación real **si** cotizar antes no le quita tiempo, **porque** su restricción
-  declarada es simplicidad y velocidad: "algo sencillo, que no me haga perder más
-  tiempo del que ya tengo" (propietaria_seguimiento.md, R-09, R-10).
+  declarada es simplicidad y velocidad ("algo sencillo, que no me haga perder más
+  tiempo del que ya tengo", propietaria_seguimiento.md) y el cliente valora ante
+  todo la rapidez del servicio (cliente.md, R-09, R-10).
 - **Señal medible:** tiempo medio de atención por trabajo de impresión (con
   cotización vs. línea base) y % de trabajos en que efectivamente aplicó la
   cotización previa. *No de vanidad: si cae bajo presión, el MVP no se usará.*
@@ -171,11 +177,12 @@ flowchart TD
 ## Secuencia de aprendizaje recomendada
 
 Las tres hipótesis se prueban en **un mismo experimento concierge de 2 semanas**
-(una sola hoja de registro). **H-01 manda**: si desconocer el precio no es la causa
-del rechazo, H-02 y H-03 dejan de importar. El experimento se diseña primero para
-responder H-01 y, de paso, instrumenta H-02 (tiempos y aciertos del conteo) y H-03
-(tiempo de atención y adopción bajo presión). Una sola observación compra la
-respuesta a las tres.
+(una sola hoja de registro). **H-01 manda**: si cotizar antes no reduce el insumo
+perdido, H-02 y H-03 dejan de importar. La deseabilidad ya no se prueba aquí —el
+cliente la confirmó de primera mano (cliente.md)—; el experimento se concentra en
+el **comportamiento de negocio**. De paso instrumenta H-02 (tiempos y aciertos del
+conteo) y H-03 (tiempo de atención y adopción bajo presión). Una sola observación
+compra la respuesta a las tres.
 
 ```mermaid
 flowchart LR
@@ -184,7 +191,7 @@ flowchart LR
   classDef medio fill:#F6E3BC,stroke:#9A6605,color:#0E1A26;
   classDef ok fill:#E3F1E8,stroke:#2E7D52,color:#0E1A26;
   P[Periodo concierge único · 2 semanas · 1 hoja de registro]:::base
-  P --> H1[H-01 cotizar antes evita el rechazo · 🔴 manda]:::alto
+  P --> H1[H-01 cotizar antes reduce el insumo perdido · 🔴 manda]:::alto
   P --> H2[H-02 conteo sin imprimir, rápido · 🟡]:::medio
   P --> H3[H-03 no alarga la atención · 🟡]:::medio
   H1 --> D{¿H-01 pasa el umbral?}:::base

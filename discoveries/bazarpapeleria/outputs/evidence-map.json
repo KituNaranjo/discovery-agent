@@ -12,6 +12,8 @@
     { "id": "registro-manual-sin-separar", "source": "propietaria.md", "persona": "Propietaria" },
     { "id": "conteo-manual-hojas", "source": "observador.md", "persona": "Propietaria" },
     { "id": "presion-atencion-unipersonal", "source": "propietaria_seguimiento.md", "persona": "Propietaria" },
+    { "id": "precio-mayor-al-esperado", "source": "cliente.md", "persona": "Cliente de impresiones" },
+    { "id": "sin-previsibilidad-de-costo", "source": "cliente.md", "persona": "Cliente de impresiones" },
     { "id": "sin-tarifario-visible", "source": "observador.md", "persona": "Cliente de impresiones" }
   ]
 }
